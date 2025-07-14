@@ -1,0 +1,6 @@
+flask
+tensorflow==2.10.0  # Use your specific TensorFlow version (e.g., 2.10.0 or latest stable)
+keras              # Keras is part of TensorFlow 2.x, but keeping it explicit doesn't hurt
+numpy
+Pillow             # For image processing
+werkzeug
