@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Recognition App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="Uploads" type="image/x-icon">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom spinner animation (from your previous code) */
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border-left-color: #3498db; /* Blue color for spinner */
+            animation: spin 1s ease infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+    </head>
+<body class="bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md text-center transform transition-all duration-300 hover:scale-105">
+        <h1 class="text-4xl font-extrabold text-green-700 mb-4 tracking-tight">Flower Recognition</h1>
+        <p class="text-gray-600 mb-6 text-lg">Upload an image of a flower to identify its species.</p>
+
+        <div class="mb-6">
+            <label for="imageUpload" class="block text-left text-gray-700 text-sm font-semibold mb-2">
+                Choose Flower Image:
+            </label>
+            <input type="file" id="imageUpload" accept="image/*" class="w-full text-gray-700 bg-gray-100 border border-gray-300 rounded-lg py-2 px-4 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent cursor-pointer">
+        </div>
+          <div class="mb-6 border-2 border-dashed border-gray-300 rounded-lg overflow-hidden flex items-center justify-center bg-gray-50 min-h-[200px]">
+             <img id="imagePreview" src="#" alt="Image Preview" class="max-w-full max-h-96 object-contain rounded-lg" style="display: none;">
+    
+              <p id="imagePlaceholder" class="text-gray-400 text-lg">No image selected</p>
+         </div>
+
+
+        <button id="identifyButton" class="w-full bg-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 transition duration-300 ease-in-out transform hover:-translate-y-1">
+            Identify Flower
+        </button>
+
+        <div id="loadingIndicator" class="mt-6 flex justify-center items-center space-x-2" style="display: none;">
+            <div class="spinner"></div>
+            <p class="text-gray-600">Identifying...</p>
+        </div>
+
+        <p id="errorMessage" class="text-red-600 mt-4 font-medium"></p>
+
+        <div id="resultBox" class="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg text-left shadow-inner" style="display: none;">
+            <h2 class="text-xl font-bold text-green-800 mb-2">Prediction Results:</h2>
+            <p id="predictionResult" class="text-gray-800 text-lg font-semibold"></p>
+            <p id="confidenceResult" class="text-gray-700 text-md mb-3"></p>
+            
+            <h3 class="text-lg font-semibold text-gray-700 mb-1">All Probabilities:</h3>
+            <ul id="allPredictionsList" class="list-disc list-inside text-gray-600">
+                </ul>
+        </div>
+    </div>
+
+    <script src="static/script.js"></script>
+</body>
+</html>
